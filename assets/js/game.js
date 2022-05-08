@@ -10,6 +10,7 @@ var enemyName = "Roborto";
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+// fight function
 var fight = function() {
     // Alert players we are starting the round
     window.alert("Welcome to robot Gladiators!");
@@ -26,7 +27,8 @@ var fight = function() {
         // Check enemies health
         if (enemyHealth <= 0) {
             window.alert(enemyName + " has died!");
-        } else {
+        } 
+        else {
             window.alert(enemyName + " still has " + enemyHealth + " health left.");
         }
 
@@ -39,11 +41,12 @@ var fight = function() {
         // Check players health
         if (playerHealth <= 0) {
             window.alert(playerName + " has died!");
-        } else {
+        } 
+        else {
             window.alert(playerName + " still has " + playerHealth + " health left.");
         }
         // If player choses to skip
-    } 
+        } 
         else if (promptFight === "skip" || promptFight === "SKIP") {
         // confirm player wants to skip
         var confirmSkip = window.confirm("Are you sure you'd like to quit?");
@@ -54,7 +57,7 @@ var fight = function() {
         // subtract money from playerMoney for skipping
         playerMoney = playerMoney - 2;
         }
-        
+
         // if no (false), ask question again by running fight() again
         else {
             fight();
@@ -65,6 +68,6 @@ var fight = function() {
         else {
         window.alert("You need to choose a valid option. Try again!");
     }
-}
+};
 
 fight ();
