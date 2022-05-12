@@ -175,7 +175,7 @@ var shop = function() {
             shop();
             break;
     }
-}
+};
 
 // start the game when the page loads.
 startGame();
