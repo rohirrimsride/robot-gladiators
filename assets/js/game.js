@@ -91,3 +91,11 @@ for(var i=0; i<enemyNames.length; i++ ) {
         break;
     }
 }
+
+// Add-ons
+
+// create an option for a player to start a new game after winning the game and display stats after completing a game.
+    // create startGame() function to restart the game, and a endGame() function to display playerStats and end the game.
+
+// create a break after a skip or battle victory to allow the player to go to shop and REFILL health, UPGRADE attack or LEAVE the shop
+    // create a shop() function to house the shop.
