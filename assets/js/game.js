@@ -3,7 +3,7 @@ var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max-min +1) + min);
 
     return value;
-}
+};
 
 // fight function
 var fight = function(enemy) {
@@ -28,7 +28,8 @@ var fight = function(enemy) {
            
         // Define enemy.health-playerInfo.attack sequence resulting in random damage
         var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
-            enemy.health = Math.max(0, enemy.health - damage);
+            
+        enemy.health = Math.max(0, enemy.health - damage);
             console.log(
                 playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining."
             );
@@ -46,7 +47,8 @@ var fight = function(enemy) {
 
         // Define playerInfo.health - enemy.attack sequence resulting in random damage
         var damage = randomNumber(enemy.attack - 3, enemy.attack);
-            playerInfo.health = Math.max(0, playerInfo.health - damage);
+            
+        playerInfo.health = Math.max(0, playerInfo.health - damage);
             console.log(
                 enemy.name + " attacked " + playerInfo.name + ". " + playerInfo.name + " now has " + playerInfo.health + " health remaining."
             );
@@ -60,7 +62,7 @@ var fight = function(enemy) {
         }                 
     }// end of while() loop   
 };// end of fight function
-
+debugger;
 // function to start a new game
 var startGame = function() {
     // reset player stats
@@ -71,15 +73,14 @@ var startGame = function() {
         if (playerInfo.health > 0) {
             // Lets player know what round they are in
             window.alert("Welcome to Robot Gladiators!  Round " + (i + 1));
-            
+
+            debugger;
+           
             // Picks a new enemy robot to fight
             var pickedEnemyObj = enemyInfo[i];
 
             // Resets enemy robot Health before starting new fight.
             pickedEnemyObj.health = randomNumber(40, 60);
-            
-            // Use debugger to pause script from running and checks what's going on at that moment in the code
-            //  debugger;
 
             // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the enemy.name parameter
             fight(pickedEnemyObj);
@@ -120,12 +121,14 @@ var endGame = function() {
     }
 };
 
-
+// go to the shop between battles function
 var shop = function() {
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
         "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store?  Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
     );
+
+    // use switch case to carry out action
     switch (shopOptionPrompt) {
         case "REFILL":
         case "refill":
@@ -134,8 +137,8 @@ var shop = function() {
 
         case "UPGRADE":
         case "upgrade":
-        playerInfo.upgradeAttack();
-        break;
+            playerInfo.upgradeAttack();
+            break;
 
         case "LEAVE":
         case "leave":
@@ -151,6 +154,11 @@ var shop = function() {
     }
 };
 
+/* END GAME FUNCTIONS */
+
+/* GAME INFORMATION / VARIABLES */
+
+// player information
 var playerInfo = {
     name: window.prompt("What is your robot's name?"),
     health: 100,
@@ -166,6 +174,8 @@ var playerInfo = {
             window.alert("Refilling player's health by 20 for 7 dollars.");
             this.health += 20;
             this.money -= 7;
+        } else {
+            window.alert("You don't have enough money!");
         }
     },
     upgradeAttack: function() {
@@ -179,6 +189,7 @@ var playerInfo = {
     }
 };
 
+// enemy information
 var enemyInfo = [
     {
         name: "Roborto",
@@ -194,17 +205,14 @@ var enemyInfo = [
     }
 ];
 
-var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-var enemyHealth = 50;
-var enemyAttack = 12;
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]["attack"]);
 
-console.log(enemyNames);
-console.log(enemyNames[0]);
-console.log(enemyNames[1]);
-console.log(enemyNames[2]);
-console.log(enemyNames.length);
+/*END GAME INFORMATION / VARIABLES */
 
-// start the game when the page loads.
+/* RUN GAME */
 startGame();
-
+debugger;
 
