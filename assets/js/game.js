@@ -1,3 +1,5 @@
+/* GAME FUNCTIONS */
+
 // function to generate a random numeric value
 var randomNumber = function(min, max) {
     var value = Math.floor(Math.random() * (max-min +1) + min);
@@ -31,7 +33,8 @@ var fightOrSkip = function(){
             // return true if player wants to leave
             return true;
         }
-    }   return false;
+    }
+    return false;   
 };
 
 // fight function
@@ -97,18 +100,21 @@ var startGame = function() {
     playerInfo.reset();
 
     for(var i=0; i<enemyInfo.length; i++ ) {
+        // check player stats
+        console.log(playerInfo);
+
         // If player is still alive, keep fighting
         if (playerInfo.health > 0) {
             // Lets player know what round they are in
             window.alert("Welcome to Robot Gladiators!  Round " + (i + 1));
-            console.log(playerInfo.health)
-            
            
             // Picks a new enemy robot to fight
             var pickedEnemyObj = enemyInfo[i];
 
             // Resets enemy robot Health before starting new fight.
             pickedEnemyObj.health = randomNumber(40, 60);
+
+            console.log(pickedEnemyObj);
 
             // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the enemy.name parameter
             fight(pickedEnemyObj);
@@ -135,8 +141,9 @@ var endGame = function() {
 
     // check localStorage for high score, if it's not there, use 0
     var highScore = localStorage.getItem("highScore");
-   
-    highScore = highScore || 0;
+    if (highScore === null) {
+        highScore = 0;
+    }
  
     // if player has more money than the high score, player has new high score!
     if (playerInfo.money > highScore) {
